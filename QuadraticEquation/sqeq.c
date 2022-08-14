@@ -40,16 +40,24 @@ int main() {
     while (num[0] = getNumbers(s, MAXLINE, num)) {
         ;
     }
-    printf("a = %f, b = %f, c = %f\n", num[1], num[2], num[3]);
-    num[4] = num[2] * num[2] - 4 * num[1] * num[3];
-    if (num[4] > 0) {
-        num[5] = (-1 * num[2] + sqrt(num[4]))/(2 * num[1]);
-        num[6] = (-1 * num[2] - sqrt(num[4]))/(2 * num[1]);
-        printf("\tD = %f,\n\tx1 = %f,\n\tx2 = %f", num[4], num[5], num[6]);
-    } else if (num[4] == 0) {
-        num[6] = num[5] = (-1 * num[2])/(2 * num[1]);
-        printf("\tD = %f,\n\tx1 = x2 = %f", num[4], num[5]);
+
+    float a = num[1];
+    float b = num[2];
+    float c = num[3];
+
+    printf("a = %f, b = %f, c = %f\n", a, b, c);
+    float D = b * b - 4 * a * c;
+
+    if (D > 0) {
+        float x1 = (-b + sqrt(D))/(2 * a);
+        float x2 = (-b - sqrt(D))/(2 * a);
+        printf("\tD = %f,\n\tx1 = %f,\n\tx2 = %f", D, x1, x2);
+    } else if (D == 0) {
+        float x = (-b)/(2 * a);
+        printf("\tD = %f,\n\tx1 = x2 = %f", D, x);
     } else {
-        printf("\tD = %f,\n\tx1, x2 in complex field", num[4]);
+        printf("\tD = %f,\n\tx1, x2 in complex field", D);
     }
+
+    return 0;
 }
