@@ -39,6 +39,8 @@ void calculate_quadr_answer(Equation *equ) {
         } else {
         equ->root_counter = 0;
         }
+    } else if (equ->b == 0 && equ->c == 0) {
+        equ->root_counter = -1;
     } else {
         calculate_lin_ans(equ);
     }
@@ -52,6 +54,8 @@ void give_answer(Equation *equ) {
         printf("\n\tx1 = %lf,\n\tx2 = %lf.\n", equ->x1, equ->x2);
     } else if (equ->root_counter == 1) {
         printf("\tx1 = %lf.\n", equ->x1);
+    } else if (equ->root_counter == -1) {
+        printf("\tThere infinite number of roots.\n");
     } else {
         printf("\tThere are no roots.\n");
     }
