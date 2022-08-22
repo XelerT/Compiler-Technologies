@@ -21,17 +21,26 @@ void get_coefficient(Equation *equ) {
     scanf("%lf %lf %lf", &equ->a, &equ->b, &equ->c);
 }
 
-void culculate_answer(Equation *equ) {
+void calculate_lin_ans(Equation *equ) {
+    equ->x1 = -(equ->c) / (equ->b);
+    equ->root_counter = 1;
+}
+
+void calculate_quadr_answer(Equation *equ) {
     double D = equ->b * equ->b - 4 * equ->a * equ->c;
-    if (fabs(D) < epsilon) {
-        equ->x1 = (-equ->b)/(2 * equ->a);
-        equ->root_counter = 1;
-    } else if (D > 0) {
-        equ->x1 = (-equ->b + sqrt(D))/(2 * equ->a);
-        equ->x2 = (-equ->b - sqrt(D))/(2 * equ->a);
-        equ->root_counter = 2;
-    } else {
+    if (equ->a != 0) {
+        if (fabs(D) < epsilon) {
+            equ->x1 = (-equ->b)/(2 * equ->a);
+            equ->root_counter = 1;
+        } else if (D > 0) {
+            equ->x1 = (-equ->b + sqrt(D))/(2 * equ->a);
+            equ->x2 = (-equ->b - sqrt(D))/(2 * equ->a);
+            equ->root_counter = 2;
+        } else {
         equ->root_counter = 0;
+        }
+    } else {
+        calculate_lin_ans(equ);
     }
 }
 
@@ -44,7 +53,7 @@ void give_answer(Equation *equ) {
     } else if (equ->root_counter == 1) {
         printf("\tx1 = %lf.\n", equ->x1);
     } else {
-        printf("\tx1, x2 in complex field.\n");
+        printf("\tThere are no roots.\n");
     }
 
 }
@@ -55,7 +64,7 @@ int main() {
     Equation equ = {};
 
     get_coefficient(&equ);
-    culculate_answer(&equ);
+    calculate_quadr_answer(&equ);
     give_answer(&equ);
 
     return 0;
