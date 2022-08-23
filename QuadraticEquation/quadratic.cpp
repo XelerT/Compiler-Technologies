@@ -21,32 +21,38 @@ void get_coefficients(polynomial *pol)
         }
 }
 
-int calculate_lin_ans(double *roots, const polynomial *pol)
+int solve_linear(double *roots, const polynomial *poly)
 {
-        if (pol->coeffs[1] == 0 && pol->coeffs[2] == 0) {
+        const double *coeffs = poly->coeffs;
+        if (coeffs[1] == 0 && coeffs[2] == 0) {
+
                 return SS_INF_ROOTS;
         } else {
-                roots[0] = -(pol->coeffs[0]) / (pol->coeffs[1]);
+                roots[0] = -coeffs[0] / coeffs[1];
+
                 return 1;
         }
 }
 
-int calculate_quadr_answer(double *roots, const polynomial *pol)
+int solve_quadratic(double *roots, const polynomial *poly)
 {
-        double Discr = pol->coeffs[1] * pol->coeffs[1] - 4 * pol->coeffs[0] * pol->coeffs[2];
-        if (pol->coeffs[0] != 0) {
-                if (fabs(Discr) < epsilon) {
-                        roots[0] = (-pol->coeffs[1]) / (2 * pol->coeffs[0]);
+        const double *coeffs = poly->coeffs;
+        double discr = coeffs[1] * coeffs[1] - 4 * coeffs[0] * coeffs[2];
+        if (coeffs[0] != 0) {
+                if (fabs(discr) < epsilon) {
+                        roots[0] = (-coeffs[1]) / (2 * coeffs[0]);
+
                         return 1;
-                } else if (Discr > 0) {
-                        roots[0] = (-pol->coeffs[1] + sqrt(Discr)) / (2 * pol->coeffs[0]);
-                        roots[1] = (-pol->coeffs[1] - sqrt(Discr)) / (2 * pol->coeffs[0]);
+                } else if (discr > 0) {
+                        roots[0] = (-coeffs[1] + sqrt(discr)) / (2 * coeffs[0]);
+                        roots[1] = (-coeffs[1] - sqrt(discr)) / (2 * coeffs[0]);
+
                         return 2;
                 } else {
                         return 0;
                 }
         } else {
-                return calculate_lin_ans(roots, pol);
+                return calculate_lin_ans(roots, poly);
         }
 }
 
@@ -76,12 +82,12 @@ int main()
 //                .coeffs = coeffs,
 //                .degree = degree
 //        };
-        polynomial pol = {};
-        pol.coeffs = coeffs;
-        pol.degree = degree;
+        polynomial poly = {};
+        poly.coeffs = coeffs;
+        poly.degree = degree;
 
-        get_coefficients(&pol);
-        n_roots = calculate_quadr_answer(roots, &pol);
+        get_coefficients(&poly);
+        n_roots = calculate_quadr_answer(roots, &poly);
         give_answer(roots, n_roots);
 
         return 0;
