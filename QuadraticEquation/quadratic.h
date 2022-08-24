@@ -25,8 +25,4 @@
 
     void give_answer(double *roots, int n_roots);
 
-    int is_equal   (double a, double b, const double threshold);
-    int is_lower   (double a, double b, const double threshold);
-    int is_greater (double a, double b, const double threshold);
-
 #endif /* QUADRATIC_H */

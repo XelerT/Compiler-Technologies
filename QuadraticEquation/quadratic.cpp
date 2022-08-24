@@ -2,7 +2,7 @@
 #include <math.h>
 #include <assert.h>
 #include "quadratic.h"
-#include "quadratic.h"
+#include "compare.h"
 
 /**
         Solves a square equation
