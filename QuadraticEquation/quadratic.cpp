@@ -23,12 +23,16 @@ static const double MAX_DEGREE =  2;
 void get_coefficients(polynomial_t *poly);
 int get_degree(void);
 
-int solve_linear(double *roots, const polynomial_t *poly);
-int solve_quadratic(double *roots, const polynomial_t *poly);
-int solve_cubic(double *roots, const polynomial_t *poly);
+int solve_linear    (double *roots, const polynomial_t *poly);
+int solve_quadratic (double *roots, const polynomial_t *poly);
+int solve_cubic     (double *roots, const polynomial_t *poly);
 int solve_polynomial(double *roots, const polynomial_t *poly);
 
 void give_answer(double *roots, int n_roots);
+
+int is_equal   (double a, double b, const double threshold);
+int is_lower   (double a, double b, const double threshold);
+int is_greater (double a, double b, const double threshold);
 
 void get_coefficients(polynomial_t *poly)
 {
@@ -55,10 +59,10 @@ int solve_quadratic(double *roots, const polynomial_t *poly)
         const double *coeffs = poly->coeffs;
         double discr = coeffs[1] * coeffs[1] - 4 * coeffs[0] * coeffs[2];
         if (coeffs[0] != 0) {
-                if (fabs(discr) < EPSILON) {
+                if (is_equal(discr, 0, EPSILON)) {
                         roots[0] = (-coeffs[1]) / (2 * coeffs[0]);
                         return 1;
-                } else if (discr > 0) {
+                } else if (is_greater(discr, 0, EPSILON)) {
                         roots[0] = (-coeffs[1] + sqrt(discr)) / (2 * coeffs[0]);
                         roots[1] = (-coeffs[1] - sqrt(discr)) / (2 * coeffs[0]);
                         return 2;
@@ -81,7 +85,7 @@ int solve_cubic (double *roots, const polynomial_t *poly) {
        return -2; //error
 }
 
-int solve_polynomial (double *roots, const polynomial *poly)
+int solve_polynomial (double *roots, const polynomial_t *poly)
 {
         switch (poly->degree) {
         case 1:
@@ -118,7 +122,7 @@ int get_degree(void)
         printf("Enter degree of your equation, please.\n");
         while (degree == 0) {
                 assert(scanf("%d", &degree));
-                if (degree > POSSIBLE_EQU_DEGREE) {
+                if (degree > MAX_DEGREE) {
                         degree = 0;
                         printf("Sorry, we can't solve your equation(degree is too high).\n"
                         "Enter degree of your equation again.\n");
@@ -129,6 +133,33 @@ int get_degree(void)
                 }
         }
         return degree;
+}
+
+int is_equal (double a, double b, const double threshold)       //a == b
+{
+        return fabs(a-b) < threshold;
+}
+
+int is_greater (double a, double b, const double threshold)       //a > b
+{
+        if (is_equal(a, b, threshold)) {
+                return 0;
+        } else if (a > b) {
+                return 1;
+        } else {
+                return 0;
+        }
+}
+
+int is_lower (double a, double b, const double threshold)       //a < b
+{
+        if (is_equal(a, b, threshold)) {
+                return 0;
+        } else if (a < b) {
+                return 1;
+        } else {
+                return 0;
+        }
 }
 
 int main()
@@ -144,7 +175,7 @@ int main()
         //        .coeffs = coeffs,
         //        .degree = degree
         //};
-        polynomial poly = {};
+        polynomial_t poly = {};
         poly.coeffs = coeffs;
         poly.degree = degree;
 
