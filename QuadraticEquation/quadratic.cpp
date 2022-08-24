@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "quadratic.h"
+#include "polynom.h"
 
 /**
         Solves a square equation
@@ -16,6 +16,9 @@ int main()
 
         int n_roots = 0;
 
+
+
+        // g++ 8+
         //polynomial poly = {
         //        .coeffs = coeffs,
         //        .degree = degree
