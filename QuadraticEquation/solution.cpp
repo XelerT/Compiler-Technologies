@@ -29,12 +29,13 @@ int solve_quadratic(double *roots, const polynomial_t *poly)
         if (coeffs[0] != 0) {
                 if (coeffs[2] != 0) {
                         assert(coeffs[0]);
-                        if (is_equal(discr, 0, EPSILON)) {
+                        if (is_equal(discr, 0, THRESHOLD)) {
                                 roots[0] = (-coeffs[1]) / (2 * coeffs[0]);
                                 return 1;
-                        } else if (is_greater(discr, 0, EPSILON)) {
-                                roots[0] = (-coeffs[1] + sqrt(discr)) / (2 * coeffs[0]);
-                                roots[1] = (-coeffs[1] - sqrt(discr)) / (2 * coeffs[0]);
+                        } else if (is_greater(discr, 0, THRESHOLD)) {
+                                double sqt_discr = sqrt(discr);
+                                roots[0] = (-coeffs[1] + sqt_discr) / (2 * coeffs[0]);
+                                roots[1] = (-coeffs[1] - sqt_discr) / (2 * coeffs[0]);
                                 return 2;
                         } else {
                                 return 0;

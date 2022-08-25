@@ -7,7 +7,6 @@
                 INF_ROOTS = -1,
         };
 
-        static const double EPSILON = 1e-15;
         static const double MAX_DEGREE =  2;
 
         int solve_linear    (double *roots, const polynomial_t *poly);
