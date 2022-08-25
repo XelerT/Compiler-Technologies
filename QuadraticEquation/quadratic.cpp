@@ -16,16 +16,10 @@ int main()
 
         int n_roots = 0;
 
-
-
-        // g++ 8+
-        //polynomial poly = {
-        //        .coeffs = coeffs,
-        //        .degree = degree
-        //};
-        polynomial_t poly = {};
-        poly.coeffs = coeffs;
-        poly.degree = degree;
+        polynomial_t poly = {
+               .coeffs = coeffs,
+               .degree = degree
+        };
 
         get_coefficients(&poly);
         n_roots = solve_polynomial(roots, &poly);

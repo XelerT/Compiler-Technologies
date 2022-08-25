@@ -1,15 +1,10 @@
 #ifndef SOLUTION_H
 #define SOLUTION_H
+#include "common_structs.h"
 
         enum nontrivial_roots {
                 NO_ROOTS  =  0,
                 INF_ROOTS = -1,
-        };
-
-        struct polynomial_t //////
-        {
-            const double *coeffs = nullptr;
-            int degree = 0;
         };
 
         static const double EPSILON = 1e-15;

@@ -46,11 +46,9 @@ void give_answer(double *roots, int n_roots)
         case WTF:
                 printf("\tYou entered smth strange. Your last coefficient equals 0.");
         default:
-                assert(0);
-                break;
-        }
-
-        for (int i = 0; i < n_roots; i++) {
+                for (int i = 0; i < n_roots; i++) {
                 printf("\tx%d = %lf\n", i + 1, roots[i]);
+                }
+                break;
         }
 }

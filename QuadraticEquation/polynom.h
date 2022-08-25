@@ -1,11 +1,6 @@
 #ifndef QUADRATIC_H
 #define QUADRATIC_H
-
-        struct polynomial_t
-        {
-            const double *coeffs = nullptr;
-            int degree = 0;
-        };
+#include "common_structs.h"
 
         int get_degree(void);
         void get_coefficients(polynomial_t *poly);
