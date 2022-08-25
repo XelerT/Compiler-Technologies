@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include "ui.h"
 #include "errors.h"
-#include "common_structs.h"
 
 void get_coefficients(polynomial_t *poly)
 {
@@ -47,6 +46,7 @@ void give_answer(double *roots, int n_roots)
                 break;
         case WTF:
                 printf("\tYou entered smth strange. Your last coefficient equals 0.");
+                break;
         default:
                 for (int i = 0; i < n_roots; i++) {
                 printf("\tx%d = %lf\n", i + 1, roots[i]);
@@ -60,13 +60,13 @@ int interface (double *roots, double *coeffs, int n_roots)
         char buff[MAX_LINE] = {'\0'};
         char command[MAX_LINE] = {'\0'};
 
-        while (buff != "quit") {
+        while (same_str(buff, "quit")) {
                 printf("Menu:\n\tsolve --> start solving polynom\n\tmenu --> return to menu\n\tquit --> exit program.\n");
 
                 get_line(buff, MAX_LINE);
                 assert(buff[0]);
                 sscanf(buff, "%s %*s", command);
-                //same_str(buff, "solve")
+
                 if (same_str(buff, "solve")) {
                         int degree = get_degree();
 
@@ -85,7 +85,7 @@ int interface (double *roots, double *coeffs, int n_roots)
                         return 0;
                 } else {
                         zero_arr(buff);
-                        printf("Sorry, I can't understand you");
+                        printf("Sorry, I can't understand you.\n");
                 }
         }
         return -1;
@@ -131,3 +131,4 @@ int same_str(char buff[], char line[])
         }
         return same;
 }
+//strcmp();

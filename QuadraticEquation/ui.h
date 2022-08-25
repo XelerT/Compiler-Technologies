@@ -3,13 +3,13 @@
 #include "common_structs.h"
 #include "common_consts.h"
 
+
         enum nontrivial_roots {
                 NO_ROOTS  =  0,
                 INF_ROOTS = -1,
         };
 
         static const double MAX_DEGREE =  2;
-        unsigned int MAX_LINE = 1000;
 
         void get_coefficients(polynomial_t *poly);
         int get_degree(void);
