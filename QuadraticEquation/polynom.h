@@ -1,14 +1,9 @@
-#ifndef QUADRATIC_H
-#define QUADRATIC_H
-// #include "common_structs.h"
+#ifndef POLYNOM_H
+#define POLYNOM_H
+#include <string.h>
+#include "errors.h"
+#include "ui.h"
 
-//         int get_degree(void);
-//         void get_coefficients(polynomial_t *poly);
-//
-//         int solve_polynomial(double *roots, const polynomial_t *poly);
-//
-//         void give_answer(double *roots, int n_roots);
+int interface(double *roots, double *coeffs, int n_roots);
 
-        int interface(double *roots, double *coeffs, int n_roots);
-
-#endif /* QUADRATIC_H */
+#endif /* POLYNOM_H */

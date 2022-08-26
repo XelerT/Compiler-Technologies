@@ -1,32 +1,62 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdlib.h>
 #include "ui.h"
 #include "errors.h"
+#include "compare.h"
 
-void get_coefficients(polynomial_t *poly)
+int get_coefficients(double coeffs[], char buff[], const int lim, int degree)
 {
-        for (int i = 0; i < poly->degree + 1; i++) {
+        for (int i = 0; i < degree + 1; i++) {
                 printf("Enter %d coefficient of equation:\n", i + 1);
-                assert(scanf("%lf", &poly->coeffs[i]));
-        }
+
+                while (get_line(buff, lim))
+                        too_long(lim - 1);
+
+                char *end = 0;
+                double get_end = strtod(buff, &end);
+                if (buff == end) {
+
+                        return ERROR;
+
+                } else {
+
+                        coeffs[i] = strtod(buff, &end);
+                }
+                // case HUGE_VAL:
+                //         return ERROR;
+                }
+                return 0;
 }
 
-int get_degree(void)
+int get_degree(const int max_degree, char buff[], const int lim)
 {
         int degree = 0;
         printf("Enter degree of your equation, please.\n");
 
         while (degree == 0) {
-                assert(scanf("%d", &degree));
-                if (degree > MAX_DEGREE) {
+
+                while (get_line(buff, lim))
+                        too_long(lim);
+
+                char *end = 0;
+                degree = strtod(buff, &end);
+                if (buff == end) {/// dsafasdf asdf asdf asd{
+                        return ERROR;
+                } else {
+                        degree = strtod(buff, &end);
+                }
+
+                if (degree > max_degree) {
                         degree = 0;
                         printf("Sorry, we can't solve your equation(degree is too high).\n"
                         "Enter degree of your equation again.\n");
                 } else if (degree <= 0) {
                         degree = 0;
                         printf("Sorry, we can't solve your equation(degree is too low).\n"
-                        "Enter degree of your equation again.\n ");
+                        "Enter degree of your equation again.\n");
                 }
         }
 
@@ -49,86 +79,36 @@ void give_answer(double *roots, int n_roots)
                 break;
         default:
                 for (int i = 0; i < n_roots; i++) {
-                printf("\tx%d = %lf\n", i + 1, roots[i]);
+                        printf("\tx%d = %lf\n", i + 1, roots[i]);
                 }
-                break;
         }
 }
 
-int interface (double *roots, double *coeffs, int n_roots)
+int get_line(char *buff, const int lim)
 {
-        char buff[MAX_LINE] = {'\0'};
-        char command[MAX_LINE] = {'\0'};
+        scanf("%s", buff); // cppref getchar
+        int i = 0;
+        while (buff[i] != '\0' && i <= lim - 1)
+                i++;
+        if (i >= lim - 1) {
 
-        while (same_str(buff, "quit")) {
-                printf("Menu:\n\tsolve --> start solving polynom\n\tmenu --> return to menu\n\tquit --> exit program.\n");
+                return BUFF_OVERFLOW;
 
-                get_line(buff, MAX_LINE);
-                assert(buff[0]);
-                sscanf(buff, "%s %*s", command);
-
-                if (same_str(buff, "solve")) {
-                        int degree = get_degree();
-
-                                polynomial_t poly = {
-                                        .coeffs = coeffs,
-                                        .degree = degree
-                                };
-
-                        get_coefficients(&poly);
-                        n_roots = solve_polynomial(roots, &poly);
-                        give_answer(roots, n_roots);
-                        zero_arr(buff);
-                } else if (same_str(buff, "menu")) {
-                        zero_arr(buff);
-                } else if (same_str(buff, "quit")) {
-                        return 0;
-                } else {
-                        zero_arr(buff);
-                        printf("Sorry, I can't understand you.\n");
-                }
-        }
-        return -1;
-}
-
-void get_line(char buff[], int lim)
-{
-        scanf("%s", buff);
-        int i;
-
-        for (i = 0; buff[i] != '\0'; i++) {
-                lim++;
-        }
-
-        if (i == lim - 1) {
-                char ans = 0;
-                printf("Your line is too long\nDo you want to continue with it?[y/n]");
-                if (scanf("%d", &ans) == 'y') {
-                        zero_arr(buff);
-                        get_line(buff, MAX_LINE);
-                } else if (scanf("%d", &ans) == 'n') {
-                      zero_arr(buff);
-                }
         } else {
                 buff[++i] = '\0';
         }
+
+        return 0;
 }
 
-void zero_arr (char buff[])
+void zero_arr(char buff[], int n)
 {
-        for (int i = 0; i < MAX_LINE; i++) {
+        for (int i = 0; i < n; i++) {
                 buff[i] = '\0';
         }
 }
 
-int same_str(char buff[], char line[])
+void too_long(int lim)
 {
-        int same = 1;
-        for (int i = 0; i < MAX_LINE && buff[i] != '\0' && same; i++) {
-                if (buff[i] != line[i]) {
-                        same = 0;
-                }
-        }
-        return same;
+        printf("Your line is too long(max is %d symbs). Try again.\n", lim - 1);
 }
-//strcmp();

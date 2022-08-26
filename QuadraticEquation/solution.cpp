@@ -8,6 +8,7 @@
 int solve_linear(double *roots, const polynomial_t *poly)
 {
         const double *coeffs = poly->coeffs;
+        assert(*coeffs);
         if (coeffs[0] == 0 && coeffs[1] == 0) {
                 return INF_ROOTS;
         } else if (coeffs[0] == 0 && coeffs[1] != 0) {
@@ -19,13 +20,12 @@ int solve_linear(double *roots, const polynomial_t *poly)
         }
 }
 
-int solve_quadratic(double *roots, const polynomial_t *poly)
+int solve_quadratic(double *roots, const polynomial_t *poly) //asse
 {
-        assert(roots); //
 
         const double *coeffs = poly->coeffs;
         double discr = coeffs[1] * coeffs[1] - 4 * coeffs[0] * coeffs[2];
-
+        assert(*coeffs);
         if (coeffs[0] != 0) {
                 if (coeffs[2] != 0) {
                         assert(coeffs[0]);
@@ -48,12 +48,14 @@ int solve_quadratic(double *roots, const polynomial_t *poly)
         } else /*if (coeffs[2] == 0)*/ {
                 const double linear_coeffs[2] = {coeffs[1], coeffs[2]};
 
-                polynomial_t poly_linear = {};
+                polynomial_t poly_linear = {}; //
                 poly_linear.coeffs = linear_coeffs;
                 poly_linear.degree = 1;
 
                 return solve_linear(roots, &poly_linear);
         }
+        assert(*roots);
+        printf("%lf\n", *roots);
 }
 
 int solve_cubic (double *roots, const polynomial_t *poly) {
