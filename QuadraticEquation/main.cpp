@@ -21,19 +21,23 @@ int main()
         char buff[MAX_LINE] = {'\0'};
 
         while (strncmp(buff, "quit", strlen("quit"))) {
-                printf("Menu:\n");
+                printf("\tMenu:\n"
+                        "*******************\n");
 
                 while (get_line(buff, MAX_LINE))
                         too_long(MAX_LINE - 1);
 
+
+
                 assert(buff[0]);
+
                 if (!strncmp(buff, "solve", sizeof(buff))) {
                         int degree = 0;
                         while ((degree = get_degree(MAX_DEGREE, buff, MAX_LINE)) == ERROR)
-                                printf("You need to enter numbers. Try again.\n");
+                                enter_num();
 
                         while (get_coefficients(coeffs, buff, MAX_LINE, degree))
-                                printf("You need to enter numbers. Try again.\n");
+                                enter_num();
 
                         polynomial_t poly = {
                                 .coeffs = coeffs,

@@ -10,12 +10,12 @@
 int get_coefficients(double coeffs[], char buff[], const int lim, int degree)
 {
         for (int i = 0; i < degree + 1; i++) {
-                printf("Enter %d coefficient of equation:\n", i + 1);
+                printf("Enter %d coefficient of equation:\n\t", i + 1);
 
                 while (get_line(buff, lim))
                         too_long(lim - 1);
 
-                char *end = 0;
+                char *end = NULL;
                 double get_end = strtod(buff, &end);
                 if (buff == end) {
 
@@ -34,7 +34,7 @@ int get_coefficients(double coeffs[], char buff[], const int lim, int degree)
 int get_degree(const int max_degree, char buff[], const int lim)
 {
         int degree = 0;
-        printf("Enter degree of your equation, please.\n");
+        printf("Enter degree of your equation, please.\n\t");
 
         while (degree == 0) {
 
@@ -52,11 +52,11 @@ int get_degree(const int max_degree, char buff[], const int lim)
                 if (degree > max_degree) {
                         degree = 0;
                         printf("Sorry, we can't solve your equation(degree is too high).\n"
-                        "Enter degree of your equation again.\n");
+                        "Enter degree of your equation again.\n\t");
                 } else if (degree <= 0) {
                         degree = 0;
                         printf("Sorry, we can't solve your equation(degree is too low).\n"
-                        "Enter degree of your equation again.\n");
+                        "Enter degree of your equation again.\n\t");
                 }
         }
 
@@ -111,4 +111,9 @@ void zero_arr(char buff[], int n)
 void too_long(int lim)
 {
         printf("Your line is too long(max is %d symbs). Try again.\n", lim - 1);
+}
+
+void enter_num()
+{
+        printf("You need to enter numbers. Try again.\n");
 }

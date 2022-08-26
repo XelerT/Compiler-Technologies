@@ -12,5 +12,6 @@ void give_answer(double *roots, int n_roots);
 
 void zero_arr (char buff[], int n);
 void too_long(int lim);
+void enter_num();
 
 #endif /* UI_H */
