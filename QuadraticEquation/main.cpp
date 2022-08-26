@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
-#include "polynom.h"
+#include "ui.h"
 
 static unsigned int MAX_LINE = 10;
 static const int MAX_DEGREE = 2;

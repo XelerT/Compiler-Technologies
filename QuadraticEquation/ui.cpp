@@ -3,9 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdlib.h>
+
 #include "ui.h"
-#include "errors.h"
-#include "compare.h"
 
 int get_coefficients(double coeffs[], char buff[], const int lim, int degree)
 {

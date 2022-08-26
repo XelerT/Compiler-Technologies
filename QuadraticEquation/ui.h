@@ -1,6 +1,9 @@
 #ifndef UI_H
 #define UI_H
+#include "errors.h"
+#include "compare.h"
 #include "solution.h"
+#include "polynom.h"
 
 int get_coefficients(double coeffs[], char buff[], const int lim, int degree);
 int get_degree(const int max_degree, char buff[], const int lim);
