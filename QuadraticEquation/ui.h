@@ -1,3 +1,8 @@
+/*!
+\file
+\brief Main header file with user interface function.
+*/
+
 #ifndef UI_H
 #define UI_H
 #include "errors.h"
@@ -16,5 +21,6 @@ void give_answer(double *roots, int n_roots);
 void zero_arr (char buff[], int n);
 void too_long(int lim);
 void enter_num();
+void cleare_screen();
 
 #endif /* UI_H */

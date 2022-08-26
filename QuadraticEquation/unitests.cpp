@@ -1,3 +1,7 @@
+/**
+        \brief Run tests to check quadratic solver algorithm.
+**/
+
 #include <stdio.h>
 #include <assert.h>
 #include "ui.h"
@@ -11,12 +15,12 @@ struct test_t {
         const double *roots  = nullptr;
 };
 
-void check_test(const test_t *test, double *roots, const double right_roots[], int i, int n_roots, int right_n_roots);
+void check_test(const test_t *test, double *roots, const double right_roots[], int n_roots, int right_n_roots);
 int compare_array(const double *arr1, double *arr2, const double threshold);
 void run_test(double a, double b, double c, double d, double e, int right_n_roots);
 void pr_true();
 
-void check_test(const test_t *test, double *roots, const double *right_roots, int i, int n_roots, int right_n_roots)
+void check_test(const test_t *test, double *roots, const double *right_roots, int n_roots, int right_n_roots)
 {
         if (n_roots == INF_ROOTS) {
                 pr_true();
@@ -28,7 +32,7 @@ void check_test(const test_t *test, double *roots, const double *right_roots, in
                 if (compare_array(right_roots, roots, THRESHOLD)) {
                         pr_true();
                 } else {
-                        printf("Test %d:\t***FALSE***.\n", i);
+                        printf("Test %d:\t***FALSE***.\n");
                 }
         }
 }
@@ -61,9 +65,9 @@ void run_test(double a, double b, double c, double d, double e, int right_n_root
         right_roots[0] = d;
         right_roots[1] = e;
 
-        test_t test[N_TESTS] = {0};
+        test_t test = {0};
 
-        test[0] = {
+        test = {
 
                 {
                          coeffs,
@@ -73,11 +77,8 @@ void run_test(double a, double b, double c, double d, double e, int right_n_root
 
         };
 
-        for (int i = 0; i < N_TESTS; i++) {
-                n_roots = solve_polynomial(roots, &(test[i].poly));
-                check_test(&test[i], roots, test[i].roots, i, n_roots, right_n_roots);
-        }
-
+                n_roots = solve_polynomial(roots, &(test.poly));
+                check_test(&test, roots, test.roots, n_roots, right_n_roots);
 }
 
 int main()

@@ -1,3 +1,9 @@
+/*!
+\file
+\brief Header file polynomial_t struct, possible roots outside real numbers.
+\todo Manager --> function pointer
+*/
+
 #ifndef SOLUTION_H
 #define SOLUTION_H
 
@@ -16,7 +22,7 @@ int solve_linear    (double *roots, const polynomial_t *poly);
 int solve_quadratic (double *roots, const polynomial_t *poly);
 int solve_cubic     (double *roots, const polynomial_t *poly);
 
-// TODO: Manager --> function pointer
+// TODO:
 int solve_polynomial(double *roots, const polynomial_t *poly);
 
 #endif /* SOLUTION_H */

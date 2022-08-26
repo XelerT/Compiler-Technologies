@@ -1,3 +1,8 @@
+/*!
+\file
+\brief Header file with comparative functions prototypes.
+*/
+
 #ifndef COMPARE_H
 #define COMPARE_H
 

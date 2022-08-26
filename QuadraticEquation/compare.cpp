@@ -1,3 +1,7 @@
+/**
+        \brief Functions using to compare double variables.
+**/
+
 #include <stdio.h>
 #include <math.h>
 #include "compare.h"

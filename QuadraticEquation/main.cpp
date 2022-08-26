@@ -1,15 +1,18 @@
+/**
+        \brief Main file in project
+        Handles user commands:
+        -help
+        -solve start solving polynom
+        -menu return to menu
+        -quit exit program.
+**/
+
 #include <stdio.h>
 #include <assert.h>
 #include "ui.h"
 
 static unsigned int MAX_LINE = 10;
 static const int MAX_DEGREE = 2;
-
-/**
-        Solves a square equation
-        @param [in] a - coefficient
-        @param [out] x1
-**/
 
 int main()
 {
@@ -20,16 +23,14 @@ int main()
 
         char buff[MAX_LINE] = {'\0'};
 
+        cleare_screen();
         while (strncmp(buff, "quit", strlen("quit"))) {
+
                 printf("\tMenu:\n"
                         "*******************\n");
 
                 while (get_line(buff, MAX_LINE))
                         too_long(MAX_LINE - 1);
-
-
-
-                assert(buff[0]);
 
                 if (!strncmp(buff, "solve", sizeof(buff))) {
                         int degree = 0;
@@ -48,13 +49,14 @@ int main()
                         give_answer(roots, n_roots);
                         zero_arr(buff, strlen(buff));
                 } else if (!strncmp(buff, "menu", sizeof(buff))) {
+                        cleare_screen();
                         zero_arr(buff, strlen("menu"));
                 } else if (!strncmp(buff, "help", sizeof(buff))) {
-
+                        cleare_screen();
                         printf("Help:                             \n"
                                "\tsolve --> start solving polynom \n"
                                "\tmenu --> return to menu         \n"
-                               "\tquit --> exit program.          \n");
+                               "\tquit --> exit program.          \n\n");
                 } else if (!strncmp(buff, "quit", sizeof(buff))) {
                         return 0;
                 }  else {
@@ -63,5 +65,6 @@ int main()
 
                 zero_arr(buff, MAX_LINE);
         }
+
         return 0;
 }
