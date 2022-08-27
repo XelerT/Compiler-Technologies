@@ -22,7 +22,4 @@ int solve_linear    (double *roots, const polynomial_t *poly);
 int solve_quadratic (double *roots, const polynomial_t *poly);
 int solve_cubic     (double *roots, const polynomial_t *poly);
 
-// TODO:
-int solve_polynomial(double *roots, const polynomial_t *poly);
-
 #endif /* SOLUTION_H */

@@ -9,15 +9,16 @@
 
 #include <stdio.h>
 #include <assert.h>
+#include "errors.h" //
 #include "ui.h"
 
-static unsigned int MAX_LINE = 10;
-static const int MAX_DEGREE = 2;
+static const unsigned MAX_LINE   = 10;
+static const unsigned MAX_DEGREE =  2;
 
 int main()
 {
         double coeffs[MAX_DEGREE + 1] = {0};
-        double roots[MAX_DEGREE] = {0};
+        double roots [MAX_DEGREE] = {0};
 
         int n_roots = 0;
 

@@ -88,8 +88,12 @@ int solve_quadratic(double *roots, const polynomial_t *poly) //asse
 \param[out] poly - pointer on struture, use to deliver coefficients.
 **/
 int solve_cubic (double *roots, const polynomial_t *poly) {
-       assert(0);
-       return WTF;
+        assert(0);
+        const double *coeffs = poly->coeffs;
+        roots[0] = 0;
+        printf("%lf", coeffs[0]);
+
+        return WTF;
 }
 
 /**
