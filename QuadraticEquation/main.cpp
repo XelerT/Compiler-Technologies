@@ -23,7 +23,6 @@ int main()
 
         char buff[MAX_LINE] = {'\0'};
 
-        cleare_screen();
         while (strncmp(buff, "quit", strlen("quit"))) {
 
                 printf("\tMenu:\n"
@@ -49,18 +48,16 @@ int main()
                         give_answer(roots, n_roots);
                         zero_arr(buff, strlen(buff));
                 } else if (!strncmp(buff, "menu", sizeof(buff))) {
-                        cleare_screen();
                         zero_arr(buff, strlen("menu"));
                 } else if (!strncmp(buff, "help", sizeof(buff))) {
-                        cleare_screen();
-                        printf(" Help:                            \n"
-                               "\tsolve --> start solving polynom \n"
-                               "\tmenu --> return to menu         \n"
-                               "\tquit --> exit program.          \n\n");
+                        printf("\n Help:                            \n"
+                               "  \tsolve --> start solving polynom \n"
+                               "  \tmenu --> return to menu         \n"
+                               "  \tquit --> exit program.          \n\n");
                 } else if (!strncmp(buff, "quit", sizeof(buff))) {
                         return 0;
                 }  else {
-                        printf("Sorry, I can't understand you.\n");
+                        printf("\nSorry, I can't understand you.\n");
                 }
 
                 zero_arr(buff, MAX_LINE);

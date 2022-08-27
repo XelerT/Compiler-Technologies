@@ -80,7 +80,7 @@ Function get degree from user using function get_line from ui.cpp. Give line fro
 
 void give_answer(double *roots, int n_roots)
 {
-        printf("  Answer:\n");
+        printf("  Answer:\n\n");
 
         switch (n_roots) {
         case INF_ROOTS:
@@ -148,15 +148,4 @@ Funtion print message when user entered something other then numbers.
 void enter_num()
 {
         printf("You need to enter numbers. Try again.\n");
-}
-
-/**
-Function clear command line screen.
-*/
-
-void cleare_screen()
-{
-        for (int i = 0; i < 50; i++) {
-                printf("\n");
-        }
 }
