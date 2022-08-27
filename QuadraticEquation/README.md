@@ -17,4 +17,4 @@ After running the program you will be got in Menu, here you can to start use pro
 - At the begining you need to write degree of your polynomial(maximum is 2)
 - Then you will need to enter coefficients of your equation.
 - **The End**. You get your answer!
-![This is an example](\example.png)
+![This is an example](https://github.com/XelerT/quadratic/blob/review/QuadraticEquation/example.png?raw=true)
