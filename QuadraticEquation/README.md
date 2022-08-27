@@ -4,8 +4,9 @@ This program can solve polynomials with 1 and 2 degrees.
 
 ## Install and run
 
->https://github.com/XelerT/quadratic.git
->run **quadratic.bat**
+> -https://github.com/XelerT/quadratic.git
+> -run **quadratic.bat**
+> -run **equation.exe**
 
 ## Usage
 
