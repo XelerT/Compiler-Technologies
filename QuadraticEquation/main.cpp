@@ -1,11 +1,11 @@
 /**
-        \brief Main file in project
+        \brief Main file in project.
         Handles user commands:
-        -help
-        -solve start solving polynom
-        -menu return to menu
+        -help show all commands to user.
+        -solve start solving polynom.
+        -menu return to menu.
         -quit exit program.
-**/
+*/
 
 #include <stdio.h>
 #include <assert.h>
@@ -53,7 +53,7 @@ int main()
                         zero_arr(buff, strlen("menu"));
                 } else if (!strncmp(buff, "help", sizeof(buff))) {
                         cleare_screen();
-                        printf("Help:                             \n"
+                        printf(" Help:                            \n"
                                "\tsolve --> start solving polynom \n"
                                "\tmenu --> return to menu         \n"
                                "\tquit --> exit program.          \n\n");

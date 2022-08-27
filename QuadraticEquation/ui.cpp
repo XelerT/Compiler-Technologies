@@ -1,6 +1,6 @@
 /**
         \brief Funtions which handle with commands from user.
-**/
+*/
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
@@ -10,6 +10,13 @@
 static unsigned int MAX_LINE = 10;
 #include "ui.h"
 
+/**
+Function get coefficients from user using function get_line from ui.cpp. Return 0 if all coefficients have been got
+\param[out] coeffs - array of coefficients which we get in this function from user.
+\param[in] buff is a buffer which used to store all input from user.
+\param[in] lim if a limit for buffer.
+\param[in] degree is a degree of polynomial which user want to solve.
+*/
 int get_coefficients(double coeffs[], char buff[], const int lim, int degree)
 {
         for (int i = 0; i < degree + 1; i++) {
@@ -27,6 +34,13 @@ int get_coefficients(double coeffs[], char buff[], const int lim, int degree)
 
         return 0;
 }
+
+/**
+Function get degree from user using function get_line from ui.cpp. Return degree which has been got.
+\param[in] max_degree is maximum equation degree which program can solve at that moment.
+\param[in] buff is a buffer which used to store all input from user.
+\param[in] lim if a limit for buffer.
+*/
 
 int get_degree(const int max_degree, char buff[], const int lim)
 {
@@ -58,6 +72,12 @@ int get_degree(const int max_degree, char buff[], const int lim)
         return degree;
 }
 
+/**
+Function get degree from user using function get_line from ui.cpp. Give line from user to buffer.
+\param[in] Roots which we got after solution.
+\param[in] Number of roots in equation.
+*/
+
 void give_answer(double *roots, int n_roots)
 {
         printf("  Answer:\n");
@@ -79,6 +99,14 @@ void give_answer(double *roots, int n_roots)
                 printf("\n");
         }
 }
+
+/**
+Function handles line from user, using buffer. Checks line on end of line(\n), EOF and free strorage in buffer.
+After last symbol from user adds '\0' at the end of buffer. Returns 0, when all is ok.
+\param[out] Buffer used to store line from user.
+\param[in] Maximum symbols user can give to program through buffer.
+*/
+
 
 int get_line(char *buff, const int lim)
 {
@@ -104,20 +132,31 @@ void zero_arr(char buff[], int n)
         }
 }
 
+/**
+Funtion print message when buffer is overflowed.
+\param[in] Maximum length of a line from user.
+*/
+
 void too_long(int lim)
 {
         printf("Your line is too long(max is %d symbs). Try again.\n", lim - 1);
 }
 
+/**
+Funtion print message when user entered something other then numbers.
+*/
 void enter_num()
 {
         printf("You need to enter numbers. Try again.\n");
 }
 
+/**
+Function clear command line screen.
+*/
 
 void cleare_screen()
 {
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 50; i++) {
                 printf("\n");
         }
 }

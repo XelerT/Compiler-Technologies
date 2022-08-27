@@ -1,4 +1,4 @@
-/*!
+/**
 \file
 \brief Main header file with user interface function.
 */

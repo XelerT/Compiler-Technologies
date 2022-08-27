@@ -1,4 +1,4 @@
-/*!
+/**
 \file
 \brief Header file polynomial_t struct, possible roots outside real numbers.
 \todo Manager --> function pointer

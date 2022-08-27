@@ -1,6 +1,6 @@
 /**
         \brief Run tests to check quadratic solver algorithm.
-**/
+*/
 
 #include <stdio.h>
 #include <assert.h>
@@ -32,7 +32,7 @@ void check_test(const test_t *test, double *roots, const double *right_roots, in
                 if (compare_array(right_roots, roots, THRESHOLD)) {
                         pr_true();
                 } else {
-                        printf("Test %d:\t***FALSE***.\n");
+                        printf("Test:\t***FALSE***.\n");
                 }
         }
 }
@@ -86,7 +86,7 @@ int main()
         run_test(2, -8.5, 8, 2.84307, 1.40692, 2);
         run_test(2, -8, 8, 2, 0, 1);
         run_test(5, -25, 8, 4.65638, 0.34361, 2);
-        run_test(134, 123, 5, -0.04263, -0.87528, 2);
+        run_test(134, 123, 6, -0.04263, -0.87528, 2); //false 6 must be 5
         run_test(0, 0, 0, 0, 0, INF_ROOTS);
         run_test(1, 1, 1, 0, 0, NO_ROOTS);
         run_test(0, 0, 1, 0, 0, WTF);
