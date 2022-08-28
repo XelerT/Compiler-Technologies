@@ -5,8 +5,8 @@ This program can solve polynomials with 1 and 2 degrees.
 ## Install and run
 
 - `$ git clone https://github.com/XelerT/quadratic.git`
-- $ **quadratic.bat**
-- $ **equation.exe**
+- `$ **quadratic.bat**`
+- `$ **equation.exe**`
 
 ## Usage
 
@@ -23,3 +23,10 @@ After running the program you will be got in Menu, here you can to start use pro
 - **The End**. You get your answer!
 
 ![This is an example](https://github.com/XelerT/quadratic/blob/review/QuadraticEquation/example.png?raw=true)
+
+## Addition info
+- Can't solve equation in complex field.
+- Can be easily modificated to solve 3 and other polynomial's degrees.
+
+## Credits
+- Created by Alex Taranov under the command of Denis Dedkov during Summer school before the first year of education on The radio system and control system faculty.
