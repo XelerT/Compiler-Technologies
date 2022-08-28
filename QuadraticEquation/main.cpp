@@ -6,7 +6,6 @@
         -menu return to menu.
         -quit exit program.
 */
-
 #include <stdio.h>
 #include <assert.h>
 #include "errors.h" //
@@ -26,15 +25,15 @@ int main()
 
         while (strncmp(buff, "quit", strlen("quit"))) {
 
-                printf("\tMenu:\n"
-                        "*******************\n");
+                printf("*******************\n"
+                       "\tMenu:\n");
 
-                while (get_line(buff, MAX_LINE))
+                while (get_line(buff, MAX_LINE) == BUFF_OVERFLOW)
                         too_long(MAX_LINE - 1);
 
                 if (!strncmp(buff, "solve", sizeof(buff))) {
-                        int degree = 0;
-                        while ((degree = get_degree(MAX_DEGREE, buff, MAX_LINE)) == ERROR)
+                        long degree = 0;
+                        while ((degree = get_degree(MAX_DEGREE, buff, MAX_LINE)) == NUM_ERROR)
                                 enter_num();
 
                         while (get_coefficients(coeffs, buff, MAX_LINE, degree))
