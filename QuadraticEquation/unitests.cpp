@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <assert.h>
+#include <windows.h>
 #include "ui.h"
 #include "unitests.h"
 
@@ -13,7 +14,7 @@ int main()
 
         run_test(2, -8.5, 8, 2.84307, 1.40692, 2, i++);
         run_test(2, -8, 8, 2, 0, 1, i++);
-        run_test(5, -25, 8, 4.65638, 0.34361, 2, i++); // TWO_ROOTS
+        run_test(5, -25, 8, 4.65638, 0.34361, 2, i++);
         run_test(134, 123, 6, -0.04263, -0.87528, 2, i++); //false 6 must be 5
         run_test(0, 0, 0, 0, 0, INF_ROOTS, i++);
         run_test(1, 1, 1, 0, 0, NO_ROOTS, i++);
@@ -39,7 +40,7 @@ void check_test(const polynomial_t *poly, double *roots, const double *right_roo
                 if (compare_array(right_roots, roots, THRESHOLD)) {
                         pr_true();
                 } else {
-                        printf("Test %d:\t***FALSE***.\n", i);
+                        printf("Test %d:\t***FAILED***.\n", i);
                         printf("\tExpected roots: %lf %lf\n", right_roots[0], right_roots[1]);
                         printf("\tExpected degree: %d ", right_n_roots);
                         if (right_n_roots == MATH_ERROR)
@@ -55,9 +56,9 @@ void check_test(const polynomial_t *poly, double *roots, const double *right_roo
         }
 }
 
-void pr_true()
+void prnt_passed()
 {
-        printf("Test:\t TRUE.\n");
+        printf("Test:\t PASSED.\n");
 }
 
 int compare_array(const double *arr1, double *arr2, const double threshold)

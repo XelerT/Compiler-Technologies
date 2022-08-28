@@ -5,7 +5,7 @@
 #ifndef COMPARE_H
 #define COMPARE_H
 
-static const double THRESHOLD = 1e-5;
+static const double THRESHOLD = 1e-5;   ///< Threshold for comparing double numbers.
 
 /**
 Compare two double constants with threshold. Returns true if first and second numbers are equal.
@@ -13,7 +13,7 @@ Compare two double constants with threshold. Returns true if first and second nu
 \param[in] Second number.
 \param[in] Threshold
 */
-int is_equal   (double a, double b, const double threshold); // параметры по умолчанію
+int is_equal   (double a, double b, const double threshold);
 
 /**
 Compare two double constants with threshold. Returns true if first is lower than second.

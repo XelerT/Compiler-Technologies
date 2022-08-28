@@ -5,8 +5,8 @@ This program can solve polynomials with 1 and 2 degrees.
 ## Install and run
 
 - `$ git clone https://github.com/XelerT/quadratic.git`
-- `$ **quadratic.bat**`
-- `$ **equation.exe**`
+- `$ quadratic.bat`
+- `$ equation.exe`
 
 ## Usage
 

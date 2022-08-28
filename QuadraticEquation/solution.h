@@ -9,7 +9,7 @@
 enum nontrivial_roots {
         NO_ROOTS  =  0,     ///< No roots in equation.
         INF_ROOTS = -1,     ///< Infinity of roots in equation.
-        };
+};
 
 struct polynomial_t
 {

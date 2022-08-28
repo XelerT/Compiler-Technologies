@@ -48,11 +48,11 @@ void zero_arr (char buff[], size_t n);
 Funtion print message when buffer is overflowed.
 \param[in] Maximum length of a line from user.
 */
-void too_long(int lim);
+void prnt_too_long(int lim);
 
 /**
 Funtion print message when user entered something other then numbers.
 */
-void enter_num();
+void prnt_enter_num();
 
 #endif /* UI_H */

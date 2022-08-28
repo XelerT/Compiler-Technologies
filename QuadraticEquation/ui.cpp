@@ -19,12 +19,12 @@ int get_coefficients(double coeffs[], char buff[], const int lim, long degree)
                 printf(" Enter %d coefficient of equation:\n\t", i + 1);
 
                 while (get_line(buff, lim))
-                        too_long(lim - 1);
+                        prnt_too_long(lim);
 
                 char *end = NULL;
                 coeffs[i] = strtod(buff, &end);
                 if (buff == end || *(end + 1) != NULL)
-                        return NUM_ERROR;
+                        return INVLD_SYMB_ERROR;
                 zero_arr(buff, MAX_LINE);
         }
 
@@ -34,19 +34,22 @@ int get_coefficients(double coeffs[], char buff[], const int lim, long degree)
 long get_degree(const int max_degree, char buff[], const int lim)
 {
         assert(buff);
+
         long degree = 0;
         printf(" Enter degree of your equation, please.\n\t");
 
         while (degree == 0) {
 
                 while (get_line(buff, lim))
-                        too_long(lim);
+                        prnt_too_long(lim);
 
                 char *end = NULL;
                 degree = strtol(buff, &end, 10);
 
-                if (buff == end || *(end + 1) != 0)
-                        return NUM_ERROR;
+                if (buff == end || *(end + 1) != 0) {
+                        zero_arr(buff, MAX_LINE - 1);
+                        return INVLD_SYMB_ERROR;
+                }
 
                 if (degree > max_degree) {
                         degree = 0;
@@ -66,17 +69,17 @@ void give_answer(double *roots, int n_roots)
 {
         assert(roots);
 
-        printf("  Answer:\n\n");
+        printf("  Answer:\n");
 
         switch (n_roots) {
         case INF_ROOTS:
-                printf("\tThere are infinite number of roots.\n");
+                printf("\tThere are infinite number of roots.\n ");
                 break;
         case NO_ROOTS:
-                printf("\tThere are no roots.\n");
+                printf("\tThere are no roots.\n ");
                 break;
         case MATH_ERROR:
-                printf("\tYou entered smth strange. Your last coefficient equals 0.\n");
+                printf("\tYou entered smth strange. Your last coefficient equals 0.\n ");
                 // stderr
                 break;
         default:
@@ -93,7 +96,7 @@ int get_line(char *buff, const int lim)
 
         int s1 = 0;
         int s2 = 0;
-        int i = 0; // size_t
+        int i = 0;
 
         do {
                 buff[i] = (char) getchar();
@@ -104,7 +107,6 @@ int get_line(char *buff, const int lim)
         while ((s1 = getchar()) != '\n' && s1 != EOF && (!isspace(s1) || !isspace(s2))) {
                 s2 = s1;
                 buff[i++] = (char) s1;
-                // i++;
                 if (i >= lim - 1) {
                         while ((s1 = getchar()) != '\n' && s1 != EOF)
                                 ;
@@ -114,7 +116,7 @@ int get_line(char *buff, const int lim)
                 }
         }
         if (isspace(buff[i]))
-                buff[i] = '\0';
+                buff[i]     = '\0';
         else
                 buff[i + 1] = '\0';
 
@@ -130,12 +132,12 @@ void zero_arr(char buff[], size_t n)
         }
 }
 
-void too_long(int lim)
+void prnt_too_long(int lim)
 {
-        printf("Your line is too long (max is %d symbs). Try again.\n", lim - 1);
+        printf("\n Your line is too long (max is %d symbs). Try again.\n ", lim - 1);
 }
 
-void enter_num()
+void prnt_enter_num()
 {
-        printf("You need to enter numbers. Try again.\n");
+        printf("\n You need to enter numbers. Try again.\n ");
 }
