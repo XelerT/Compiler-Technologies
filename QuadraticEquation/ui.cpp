@@ -19,7 +19,7 @@ int get_coefficients(double coeffs[], char buff[], const int lim, long degree)
                 printf(" Enter %d coefficient of equation:\n\t", i + 1);
 
                 while (get_line(buff, lim))
-                        prnt_too_long(lim);
+                        print_too_long(lim);
 
                 char *end = NULL;
                 coeffs[i] = strtod(buff, &end);
@@ -41,7 +41,7 @@ long get_degree(const int max_degree, char buff[], const int lim)
         while (degree == 0) {
 
                 while (get_line(buff, lim))
-                        prnt_too_long(lim);
+                        print_too_long(lim);
 
                 char *end = NULL;
                 degree = strtol(buff, &end, 10);
@@ -79,8 +79,7 @@ void give_answer(double *roots, int n_roots)
                 printf("\tThere are no roots.\n ");
                 break;
         case MATH_ERROR:
-                printf("\tYou entered smth strange. Your last coefficient equals 0.\n ");
-                // stderr
+                printf("\tThere are no roots.\n ");
                 break;
         default:
                 for (int i = 0; i < n_roots; i++) {
@@ -132,12 +131,12 @@ void zero_arr(char buff[], size_t n)
         }
 }
 
-void prnt_too_long(int lim)
+void print_too_long(int lim)
 {
         printf("\n Your line is too long (max is %d symbs). Try again.\n ", lim - 1);
 }
 
-void prnt_enter_num()
+void print_enter_num()
 {
         printf("\n You need to enter numbers. Try again.\n ");
 }

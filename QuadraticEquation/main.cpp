@@ -29,15 +29,15 @@ int main()
                        "\tMenu:\n ");
 
                 while (get_line(buff, MAX_LINE) == BUFF_OVERFLOW)
-                        prnt_too_long(MAX_LINE);
+                        print_too_long(MAX_LINE);
 
                 if (!strncmp(buff, "solve", sizeof(buff))) {
                         long degree = 0;
                         while ((degree = get_degree(MAX_DEGREE, buff, MAX_LINE)) == INVLD_SYMB_ERROR)
-                                prnt_enter_num();
+                                print_enter_num();
 
                         while (get_coefficients(coeffs, buff, MAX_LINE, degree))
-                                prnt_enter_num();
+                                print_enter_num();
 
                         polynomial_t poly = {
                                 .coeffs = coeffs,

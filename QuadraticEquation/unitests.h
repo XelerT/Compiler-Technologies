@@ -15,13 +15,13 @@ struct test_t {
 };
 
 /**
-Function get coefficients from user using function get_line from ui.cpp. Return 0 if all coefficients have been got
-\param[in] pointer on struture, use to deliver coefficients and degree of polynom.
-\param[in] Roots of equation that have been calculated by the program.
-\param[in] Right roots of equation which must be calculated by the program.
-\param[in] Number of roots that has been calculated by the program.
-\param[in] Right number of roots is roots which must be calculated by the program.
-\param[in] Number of test.
+        Function checks right and calculated roots for quality.
+        \param[in] pointer on struture, use to deliver coefficients and degree of polynom.
+        \param[in] Roots of equation that have been calculated by the program.
+        \param[in] Right roots of equation which must be calculated by the program.
+        \param[in] Number of roots that has been calculated by the program.
+        \param[in] Right number of roots is roots which must be calculated by the program.
+        \param[in] Number of test.
 */
 void check_test(const polynomial_t *poly, double *roots, const double *right_roots, int n_roots, int right_n_roots, int i);
 
@@ -46,6 +46,6 @@ void run_test(double a, double b, double c, double d, double e, int right_n_root
 /**
         Print message that test has been passed.
 */
-void prnt_passed();
+void print_passed();
 
 #endif // UNITESTS_H

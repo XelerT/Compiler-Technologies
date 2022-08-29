@@ -56,7 +56,7 @@ void check_test(const polynomial_t *poly, double *roots, const double *right_roo
         }
 }
 
-void prnt_passed()
+void print_passed()
 {
         printf("Test:\t PASSED.\n");
 }
